@@ -122,8 +122,11 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MyContentPage.xaml.cs">
-      <DependentUpon>MyContentPage.xaml</DependentUpon>
+    <Compile Include="Pages\CreateNewCourse.xaml.cs">
+      <DependentUpon>CreateNewCourse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoadOldCourse.xaml.cs">
+      <DependentUpon>LoadOldCourse.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Results.xaml.cs">
       <DependentUpon>Results.xaml</DependentUpon>
@@ -158,9 +161,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\MyContentPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Pages\CreateNewCourse.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LoadOldCourse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Results.xaml">
       <SubType>Designer</SubType>

@@ -9,6 +9,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <TextBlock x:Name="TxtComPort" HorizontalAlignment="Left" Margin="72,125,0,0" Text="Valitse com portti" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <ComboBox x:Name="ListComPort" HorizontalAlignment="Left" Margin="72,149,0,0" VerticalAlignment="Top" Width="200"/>
 
     </Grid>
 </Page>

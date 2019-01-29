@@ -41,33 +41,25 @@ namespace EmitMiniResults
         // List of ValueTuple holding the Navigation Tag and the relative Navigation Page
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
         {
-            ("home", typeof(Results)),
-            ("apps", typeof(Results)),
-            ("games", typeof(Results)),
-            ("music", typeof(Results)),
+            //("results", typeof(Results)),
+            //("createNew", typeof(CreateNewCourse)),
+            //("loadOld", typeof(LoadOldCourse)),
+            //("music", typeof(Results)),
         };
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            // You can also add items in code.
-            NavView.MenuItems.Add(new NavigationViewItemSeparator());
-            NavView.MenuItems.Add(new NavigationViewItem
-            {
-                Content = "My content",
-                Icon = new SymbolIcon((Symbol)0xF1AD),
-                Tag = "content"
-            });
-            _pages.Add(("content", typeof(MyContentPage)));
+            // Add navigation items
+            CreateNavigationItems();
 
             // Add handler for ContentFrame navigation.
             ContentFrame.Navigated += On_Navigated;
 
-            // NavView doesn't load any page by default, so load home page.
+            // NavView doesn't load any page by default, so load results page.
             NavView.SelectedItem = NavView.MenuItems[0];
             // If navigation occurs on SelectionChanged, this isn't needed.
-            // Because we use ItemInvoked to navigate, we need to call Navigate
-            // here to load the home page.
-            NavView_Navigate("home", new EntranceNavigationTransitionInfo());
+            // Because we use ItemInvoked to navigate, we need to call Navigate here to load the home page.
+            NavView_Navigate("results", new EntranceNavigationTransitionInfo());
 
             // Add keyboard accelerators for backwards navigation.
             var goBack = new KeyboardAccelerator { Key = VirtualKey.GoBack };
@@ -84,8 +76,7 @@ namespace EmitMiniResults
             this.KeyboardAccelerators.Add(altLeft);
         }
 
-        private void NavView_ItemInvoked(NavigationView sender,
-                                         NavigationViewItemInvokedEventArgs args)
+        private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if(args.IsSettingsInvoked == true)
             {
@@ -137,14 +128,12 @@ namespace EmitMiniResults
             }
         }
 
-        private void NavView_BackRequested(NavigationView sender,
-                                           NavigationViewBackRequestedEventArgs args)
+        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
         {
             On_BackRequested();
         }
 
-        private void BackInvoked(KeyboardAccelerator sender,
-                                 KeyboardAcceleratorInvokedEventArgs args)
+        private void BackInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
         {
             On_BackRequested();
             args.Handled = true;
@@ -173,19 +162,51 @@ namespace EmitMiniResults
             {
                 // SettingsItem is not part of NavView.MenuItems, and doesn't have a Tag.
                 NavView.SelectedItem = (NavigationViewItem)NavView.SettingsItem;
-                NavView.Header = "Settings";
+                NavView.Header = "Asetukset";
             }
             else if(ContentFrame.SourcePageType != null)
             {
                 var item = _pages.FirstOrDefault(p => p.Page == e.SourcePageType);
 
-                NavView.SelectedItem = NavView.MenuItems
-                    .OfType<NavigationViewItem>()
-                    .First(n => n.Tag.Equals(item.Tag));
+                NavView.IsPaneOpen = ContentFrame.SourcePageType != typeof(Results);
 
-                NavView.Header =
-                    ((NavigationViewItem)NavView.SelectedItem)?.Content?.ToString();
+                NavView.SelectedItem = NavView.MenuItems.OfType<NavigationViewItem>().First(n => n.Tag.Equals(item.Tag));
+
+                NavView.Header = ((NavigationViewItem)NavView.SelectedItem)?.Content?.ToString();
             }
         }
+
+        private void CreateNavigationItems()
+        {
+            // You can also add items in code.
+            //NavView.MenuItems.Add(new NavigationViewItemSeparator());
+            NavView.MenuItems.Add(new NavigationViewItem
+            {
+                Content = "Tulokset",
+                Icon = new SymbolIcon((Symbol)0xE726),
+                Tag = "results"
+            });
+            _pages.Add(("results", typeof(Results)));
+
+            NavView.MenuItems.Add(new NavigationViewItemHeader{Content = "Hallinta"});
+
+            NavView.MenuItems.Add(new NavigationViewItem
+            {
+                Content = "Luo uusi rata",
+                Icon = new SymbolIcon((Symbol)0xE734),
+                Tag = "createNew"
+            });
+            _pages.Add(("createNew", typeof(CreateNewCourse)));
+
+            NavView.MenuItems.Add(new NavigationViewItem
+            {
+                Content = "Lataa vanha rata",
+                Icon = new SymbolIcon((Symbol)0xED25),
+                Tag = "loadOld"
+            });
+            _pages.Add(("loadOld", typeof(LoadOldCourse)));
+
+        }
+
     }
 }
