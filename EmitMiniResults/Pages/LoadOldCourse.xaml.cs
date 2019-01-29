@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,6 +26,47 @@ namespace EmitMiniResults.Pages
         public LoadOldCourse()
         {
             this.InitializeComponent();
+        }
+
+        private StorageFile _loadedCourse = null;
+
+        private void BtnBrowseForFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFile();
+        }
+
+        private async void OpenFile()
+        {
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+            //picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            picker.FileTypeFilter.Add(".txt");
+
+            Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
+            if(file != null)
+            {
+                _loadedCourse = file;
+                // Application now has read/write access to the picked file
+                this.TxtFileName.Text = Path.Combine(file.Path, file.Name);
+            }
+            else
+            {
+                this.TxtFileName.Text = "Operation cancelled.";
+            }
+        }
+
+        private void BtnLoadOldCourse_Click(object sender, RoutedEventArgs e)
+        {
+            ReadCourseFromFileToMemory();
+            //TxtFileName.Text = _text;
+        }
+
+        private string _text = "";
+        private async void ReadCourseFromFileToMemory()
+        {
+
+            // Read file
+            _text = await FileIO.ReadTextAsync(_loadedCourse);
         }
     }
 }

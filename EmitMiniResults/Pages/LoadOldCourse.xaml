@@ -11,8 +11,9 @@
     <Grid>
         <TextBlock x:Name="TxtFileNameHeader" HorizontalAlignment="Left" Margin="145,131,0,0" Text="Anna tiedoston nimi" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBox x:Name="TxtFileName" HorizontalAlignment="Left" Margin="145,153,0,0" Text="C:\" VerticalAlignment="Top" Width="301"/>
-        <Button x:Name="BtnBrowseForFile" Content="Selaa.." HorizontalAlignment="Left" Margin="461,153,0,0" VerticalAlignment="Top" Width="128"/>
-        <TextBlock x:Name="TxtLastOpenedHeader" HorizontalAlignment="Left" Margin="145,205,0,0" Text="Viimeksi käytetyt" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="BtnBrowseForFile" Content="Selaa.." HorizontalAlignment="Left" Margin="461,153,0,0" VerticalAlignment="Top" Width="128" Click="BtnBrowseForFile_Click"/>
+        <TextBlock x:Name="TxtLastOpenedHeader" HorizontalAlignment="Left" Margin="145,258,0,0" Text="Viimeksi käytetyt" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="BtnLoadOldCourse" Content="Lataa" HorizontalAlignment="Left" Margin="145,196,0,0" VerticalAlignment="Top" Width="125" Click="BtnLoadOldCourse_Click"/>
 
     </Grid>
 </Page>
