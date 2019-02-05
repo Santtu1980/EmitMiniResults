@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
@@ -15,6 +16,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using EmitMiniResults.Pages;
+using MTRSerial;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -28,6 +30,8 @@ namespace EmitMiniResults
         public MainPage()
         {
             this.InitializeComponent();
+            MTRSerialPort _serialPort = new MTRSerialPort();
+            
         }
 
         // Add "using" for WinUI controls.

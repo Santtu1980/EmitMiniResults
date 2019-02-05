@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using MTRSerial;
+using MTRSerial.Enumerations;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -26,6 +28,8 @@ namespace EmitMiniResults.Pages
         public LoadOldCourse()
         {
             this.InitializeComponent();
+            MTRSerial.MTRSerialPort _serialPort = new MTRSerialPort();
+            _serialPort.AskFromMTR(CommandsToMTR.CommandName.Status);
         }
 
         private StorageFile _loadedCourse = null;

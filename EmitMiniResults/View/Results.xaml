@@ -9,6 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="841,29,0,0" Text="asdasdasd" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Text="Top 5" VerticalAlignment="Top"/>
+    <ListView>
+            <ListViewItem>First</ListViewItem>
+            <ListViewItem>Second</ListViewItem>
+    </ListView>
     </Grid>
 </Page>
+ 

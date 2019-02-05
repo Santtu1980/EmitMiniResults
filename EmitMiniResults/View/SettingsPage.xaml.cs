@@ -25,6 +25,7 @@ namespace EmitMiniResults.Pages
         public SettingsPage()
         {
             this.InitializeComponent();
+
         }
     }
 }
