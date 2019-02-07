@@ -8,12 +8,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Text="Top 5" VerticalAlignment="Top"/>
-    <ListView>
-            <ListViewItem>First</ListViewItem>
-            <ListViewItem>Second</ListViewItem>
-    </ListView>
+    <Grid x:Name="ResultBaseGrid">
+
     </Grid>
 </Page>
  

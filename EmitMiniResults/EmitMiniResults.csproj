@@ -119,9 +119,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ReadResults.cs" />
+    <Compile Include="Helpers\Result.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\BaseModel.cs" />
     <Compile Include="View\CreateNewCourse.xaml.cs">
       <DependentUpon>CreateNewCourse.xaml</DependentUpon>
     </Compile>
