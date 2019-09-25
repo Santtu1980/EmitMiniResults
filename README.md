@@ -15,6 +15,8 @@ Scoreboard to results read from emit tags
 ### Päänäkymä | Main page
 * Luo uusi | Create a new course
 * Hae vanha | Load existing course
+* Luo uusi rata kortin tuloksista | Create a new course from emit card results
+* Useampi samanaikainen rata | Several courses at the time
 * Tuloslistaus (top 5?, top10?, kaikki?) | Result list (top5, top10 all)
 * Rastiväliajan mukaan paremmuusjärjestykseen? | Ordered by checkpoint time
 * Fullscreen + adaptiivisuus | Fulscreen / scalable to all resolutions
